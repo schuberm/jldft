@@ -16,14 +16,15 @@ if(V!=Vc)
 	@sprintf("V is different" )
 end
 ##compute dual representation of potential
-cJdag(O(cJ(V)))
-#gbl_Vdual=cJdag(O(cJ(V)))
+#cJdag(O(cJ(V)))
+gbl_Vdual=cJdag(O(cJ(V)))
 
 ## Finite difference test
 Ns=4; ## Number of states
-randn("seed",0.2004)
-W=(randn(prod(S),Ns)+i*randn(prod(S),Ns))
-more off; ## View output as it is computed
+#randn("seed",0.2004)
+#randn(1)
+W=(randn(prod(S),Ns)+im*randn(prod(S),Ns))
+#more off; ## View output as it is computed
 #fdtest(W)
 
 W=W*sqrtm(inv(W'*O(W)))

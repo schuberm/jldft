@@ -105,9 +105,9 @@ end
 function fft3(dat,N,s)
 #  tic
   if s==1
-    out=reshape(ifftn(reshape(dat,N[1],N[2],N[3]))*prod(N),size(dat))
+    out=reshape(ifft(reshape(dat,N[1],N[2],N[3]))*prod(N),size(dat))
   else
-    out=reshape(fftn(reshape(dat,N[1],N[2],N[3])),size(dat))
+    out=reshape(fft(reshape(dat,N[1],N[2],N[3])),size(dat))
   end
 
 #  Ntot=prod(size(dat))
@@ -257,7 +257,8 @@ function sd(in,Nit)
   out=in
   for iter=1:1:Nit
     out=out-alpha*getgrad(out)
-    @sprintf("Energy: %20.16f\n",getE(out))
+    #@sprintf("Energy: %20.16f\n",getE(out))
+    print(getE(out))
     #old=out
   end
   return out
